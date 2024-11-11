@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<!-- Navigation-->
+	{% include 'tools/navigation.html.twig'  %}
+	<!-- Header-->
+	{% include 'tools/header.html.twig'  %}
+
+	<!-- Section-->
+	<div class="container">
+		<hr/>
+
+
+		<h1>Liste des Cliens</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+                    <th>Prénom</th>
+					<th>Adresse</th>
+                    <th>Type</th>
+                    <th>Photo de profil</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{% for  client in clients %}
+					<tr>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.prenom }}</td>
+                    <td>{{ client.adresse }}</td>
+                    <td>{{ client.type }}</td>
+                    <td>{{ client.photo }}</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="8">Aucun Client
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

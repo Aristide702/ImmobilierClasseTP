@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<!-- Navigation-->
+	{% include 'tools/navigation.html.twig'  %}
+	<!-- Header-->
+	{% include 'tools/header.html.twig'  %}
+
+	<!-- Section-->
+	<div class="container">
+		<hr/>
+
+
+		<h1>Liste des Biens</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Adresse</th>
+					<th>Type</th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+					<tr>
+						<td>{{ client.id }}</td>
+						<td>{{ client.nom}}</td>
+						<td>{{ client.prenom}}</td>
+						<td>{{ client.adresse }}</td>
+						<td>{{ client.type}}</td>
+
+							
+
+					</tr>
+				
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

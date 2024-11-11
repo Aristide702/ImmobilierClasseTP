@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Agence;
 use App\Repository\AgenceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,4 +18,14 @@ class AgenceController extends AbstractController
             'agences' => $agenceRepository->findAll(),
         ]);
     }
+
+    #[Route('/agences/{id}', name: 'agence_affichage')]
+    public function affichage(Agence $agence): Response
+    {
+        return $this->render('agence/affichage.html.twig', [
+            'controller_name' => 'AgenceController',
+            'agence' => $agence,
+        ]);
+    }
+
 }

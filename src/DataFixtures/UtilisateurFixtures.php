@@ -19,7 +19,7 @@ class UtilisateurFixtures extends Fixture
             $user->setNom($faker->lastName())
                 ->setPrenoms($faker->firstName())
                 ->setAdresse($faker->streetAddress())
-                ->setDateNaissance($faker->dateTime($max = 'now', $timezone = null))
+                //->setDateNaissance($faker->dateTime($max = 'now', $timezone = null))
             ;
 
             $manager->persist($user);

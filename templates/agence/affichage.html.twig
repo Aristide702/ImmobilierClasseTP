@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<!-- Navigation-->
+	{% include 'tools/navigation.html.twig'  %}
+	<!-- Header-->
+	{% include 'tools/header.html.twig'  %}
+
+	<!-- Section-->
+	<div class="container">
+		<hr/>
+
+
+		<h1>Liste des Biens</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Numero</th>
+					<th>Adresse</th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+					<tr>
+						<td>{{ agence.id }}</td>
+						<td>{{ agence.NumeroAgence }}</td>
+						<td>{{ agence.adresse }}</td>
+
+							
+
+					</tr>
+				
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
