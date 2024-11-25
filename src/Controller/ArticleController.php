@@ -20,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ArticleController extends AbstractController
 {
        
-    
+     //FindAll()
     #[Route('/articles', name: 'article_index')]
     public function index(ArticleRepository $articleRepository): Response
     {
@@ -68,14 +68,60 @@ class ArticleController extends AbstractController
         ]);
     }
     
+    /*
+        #[Route('/articles/{id}', name: 'article_affichage', methods: ['GET'])]
+        public function affichage(Article $article): Response
+        {
+            return $this->render('article/affichage.html.twig', [
+                'controller_name' => 'ArticleController',
+                'article'=> $article,
+            ]);
+        } 
+    */
+
+    //Find()
     #[Route('/articles/{id}', name: 'article_affichage', methods: ['GET'])]
-    public function affichage(Article $article): Response
+    public function affichage($id, ArticleRepository $articlerepo ): Response
     {
+        $articles = $articlerepo->find($id);
         return $this->render('article/affichage.html.twig', [
-            'controller_name' => 'ArticleController',
-            'article'=> $article,
+            'article'=> $articles,
         ]);
+
     }
+
+
+    //FindOneBy()
+    #[Route('/articles/liste1', name: 'article_affichage3', methods: ['GET'])]
+    public function affichageArticle(ArticleRepository $artrepo)
+    {
+        $articles = $artrepo->findOneBy(
+
+        ['titre' => 'Maison à louer']);
+        
+        return $this->render(
+            'article/affichage.html.twig', [
+            'article' => $articles,
+            ]
+        );
+    }
+
+    
+    //FindBy()
+    #[Route('/articles/liste2', name: 'article_affichage4', methods: ['GET'])]
+    public function affichageArticle2(ArticleRepository $artrepo)
+    {
+        $articles = $artrepo->findOneBy(
+            ['titre' => 'Maison à louer'],
+            ['id'=>'ASC']);
+
+        return $this->render(
+            'article/affichage.html.twig', [
+            'article' => $articles,
+            ]
+        );
+    }
+
 
     #[Route('/articles/modif/{id}', name: 'article_modif')]
     public function modifArticle(Request $request, Article $article, EntityManagerInterface $manager)
