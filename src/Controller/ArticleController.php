@@ -37,21 +37,7 @@ class ArticleController extends AbstractController
         //$form = $this->createFormBuilder($article)
         $form = $this->createForm(ArticleType::class, $article);
 
-       /* // Formulaire à l'interieur du controleur
-            ->add('titre')
-            ->add('adresse')
-            ->add('images')
-            ->add('type')
-            ->add('surface')
-            ->add('prix')
-            ->add('owner')
-            ->add('owner')
-            ->add('gestionnaire')
-            ->add('agence')
-            ->add('description')
-
-            ->getForm(); */
-
+       
         $form->handleRequest($request); // Le Request
 
         //var_dump($article);
