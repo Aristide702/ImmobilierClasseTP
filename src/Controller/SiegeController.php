@@ -71,7 +71,7 @@ final class SiegeController extends AbstractController
     #[Route('/{id}', name: 'app_siege_delete', methods: ['POST'])]
     public function delete(Request $request, Siege $siege, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$siege->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $siege->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($siege);
             $entityManager->flush();
         }

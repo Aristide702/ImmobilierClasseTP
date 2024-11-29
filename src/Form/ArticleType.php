@@ -24,22 +24,22 @@ class ArticleType extends AbstractType
             ->add('titre', TextType::class, [
                 'label' => 'Intitulé',
                 'required'   => true,
-                'disabled'=> false, 
+                'disabled' => false,
                 'empty_data' => 'Sans Reference',
             ])
 
             ->add('adresse', TextareaType::class, [
                 'label' => 'Adresse',
                 'required'   => true,
-                'disabled'=> false, 
-               
+                'disabled' => false,
+
             ])
-            ->add('images',TextType::class, [
+            ->add('images', TextType::class, [
                 'label' => 'Photo',
                 'required'   => false,
-                'disabled'=> true, 
+                'disabled' => true,
                 'empty_data' => 'https://img.leboncoin.fr/api/v1/lbcpb1/images/04/de/81/04de81467bcb4f5ec2379f7289bc752a63bcd9e0.jpg?rule=classified-1200x800-webp',
-                ])
+            ])
 
             ->add('type', ChoiceType::class, [
                 'choices'  => [
@@ -49,14 +49,16 @@ class ArticleType extends AbstractType
                     'F4' => '4',
                     'F5' => '5',
                 ],
-                ])
+            ])
 
             ->add('surface', IntegerType::class, [])
             ->add('prix', IntegerType::class, [])
             ->add('owner', TextType::class, [
-                'label' => 'Gestionnaire'])
+                'label' => 'Gestionnaire'
+            ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description'])
+                'label' => 'Description'
+            ])
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'titre',
@@ -64,7 +66,7 @@ class ArticleType extends AbstractType
             ->add('client', EntityType::class, [
                 'class' => Client::class,
                 'choice_label' => 'nom',
-                'label'=>"Proprio"
+                'label' => "Proprio"
             ])
             ->add('agence', EntityType::class, [
                 'class' => Agence::class,
@@ -73,7 +75,7 @@ class ArticleType extends AbstractType
             ->add('employe', EntityType::class, [
                 'class' => Employe::class,
                 'choice_label' => 'id',
-                'label'=>"Gestionnaire"
+                'label' => "Gestionnaire"
             ])
         ;
     }

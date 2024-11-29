@@ -3,9 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Utilisateur;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class UtilisateurFixtures extends Fixture
 {
@@ -17,14 +17,20 @@ class UtilisateurFixtures extends Fixture
         for ($i = 0; $i < 100; $i++) {
             $user = new Utilisateur();
             $user->setNom($faker->lastName())
-                ->setPrenoms($faker->firstName())
+                ->setPrenom($faker->firstName())
+                ->setDateNaissance($faker->dateTime($max = 'now', $timezone = null))
                 ->setAdresse($faker->streetAddress())
-               // ->setDateNaissance($faker->dateTime($max = 'now', $timezone = null))
+                ->setSexe($faker->title($gender = 'Homme' | 'Femme'))
+                ->setTelephone($faker->phoneNumber())
+                ->setMail($faker->email)
+                ->setLogin($faker->userName)
+                ->setPassword($faker->password)
             ;
 
             $manager->persist($user);
-/*             echo "Adding reference: " . self::UTILISATEUR_REFERENCE . $i . "\n";
- */            $this->addReference(self::UTILISATEUR_REFERENCE . $i, $user);
+            /*             echo "Adding reference: " . self::UTILISATEUR_REFERENCE . $i . "\n";
+ */
+            $this->addReference(self::UTILISATEUR_REFERENCE . $i, $user);
         }
         // $product = new Product();
         // $manager->persist($product);

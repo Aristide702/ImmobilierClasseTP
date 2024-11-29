@@ -7,29 +7,19 @@
     <table>
         <thead>
             <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Nom
-                </th>
-                <th>
-                    Prénom
-                </th>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Revenus</th>
             </tr>
         </thead>
         <tbody>
             {% for directeur in directeurs %}
                 <tr>
-                    <td>
-                        {{ directeur.id }}
-                    </td>
-                    <td>
-                        {{ directeur.nom }}
-                    </td>
-                    <td>
-                        {{ directeur.prenom }}
-                    </td>
+                    <td>{{ directeur.id }}</td>
+                    <td>{{ directeur.nom }}</td>
+                    <td>{{ directeur.prenom }}</td>
+                    <td>{{ directeur.revenus }} €</td>
                     
                 </tr>
             {% else %}

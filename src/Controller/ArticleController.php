@@ -19,14 +19,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 //#[Route('/article', name: '')]
 class ArticleController extends AbstractController
 {
-       
-     //FindAll()
+
+    //FindAll()
     #[Route('/articles', name: 'article_index')]
     public function index(ArticleRepository $articleRepository): Response
     {
         return $this->render('article/index.html.twig', [
             'controller_name' => 'ArticleController',
-            'articles'=> $articleRepository->findAll(),
+            'articles' => $articleRepository->findAll(),
         ]);
     }
 
@@ -37,7 +37,7 @@ class ArticleController extends AbstractController
         //$form = $this->createFormBuilder($article)
         $form = $this->createForm(ArticleType::class, $article);
 
-       
+
         $form->handleRequest($request); // Le Request
 
         //var_dump($article);
@@ -53,7 +53,7 @@ class ArticleController extends AbstractController
             'formCreatArticle' => $form->createView(),
         ]);
     }
-    
+
     /*
         #[Route('/articles/{id}', name: 'article_affichage', methods: ['GET'])]
         public function affichage(Article $article): Response
@@ -67,13 +67,12 @@ class ArticleController extends AbstractController
 
     //Find()
     #[Route('/articles/{id}', name: 'article_affichage', methods: ['GET'])]
-    public function affichage($id, ArticleRepository $articlerepo ): Response
+    public function affichage($id, ArticleRepository $articlerepo): Response
     {
         $articles = $articlerepo->find($id);
         return $this->render('article/affichage.html.twig', [
-            'article'=> $articles,
+            'article' => $articles,
         ]);
-
     }
 
 
@@ -83,27 +82,31 @@ class ArticleController extends AbstractController
     {
         $articles = $artrepo->findOneBy(
 
-        ['titre' => 'Maison à louer']);
-        
+            ['titre' => 'Maison à louer']
+        );
+
         return $this->render(
-            'article/affichage.html.twig', [
-            'article' => $articles,
+            'article/affichage.html.twig',
+            [
+                'article' => $articles,
             ]
         );
     }
 
-    
+
     //FindBy()
     #[Route('/articles/liste2', name: 'article_affichage4', methods: ['GET'])]
     public function affichageArticle2(ArticleRepository $artrepo)
     {
         $articles = $artrepo->findOneBy(
             ['titre' => 'Maison à louer'],
-            ['id'=>'ASC']);
+            ['id' => 'ASC']
+        );
 
         return $this->render(
-            'article/affichage.html.twig', [
-            'article' => $articles,
+            'article/affichage.html.twig',
+            [
+                'article' => $articles,
             ]
         );
     }
@@ -126,11 +129,11 @@ class ArticleController extends AbstractController
             ->add('description')
             ->getForm();
 
-        $form->handleRequest($request); 
+        $form->handleRequest($request);
 
-        if ($form->isSubMitted() && $form->isValid()) { 
-            $manager->persist($article); 
-            $manager->flush(); 
+        if ($form->isSubMitted() && $form->isValid()) {
+            $manager->persist($article);
+            $manager->flush();
 
             return $this->redirectToRoute('article_affichage', ['id' => $article->getId()]);
         }
@@ -139,11 +142,11 @@ class ArticleController extends AbstractController
             'formCreatArticle' => $form->createView(),
         ]);
     }
-  
+
     public function contact(Request $request)
     {
         //dd('$contact');
-        $contact = $request ->attributes->get('contact'); 
+        $contact = $request->attributes->get('contact');
         return new Response(" Vous êtes le Cont N° $contact");
         //die(); 
     }
@@ -153,7 +156,7 @@ class ArticleController extends AbstractController
     {
         return $this->render('article/page.html.twig', [
             'controller_name' => 'ArticleController',
-            'title'=>'Location de Biens'
+            'title' => 'Location de Biens'
         ]);
     }
 

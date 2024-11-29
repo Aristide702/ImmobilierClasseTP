@@ -7,35 +7,36 @@
     <table>
         <thead>
             <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Nom
-                </th>
-                <th>
-                    Prénom
-                </th>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Adresse</th>
+                <th>Sexe</th>
+                <th>Téléphone</th>
+                <th>e-mail</th>
+                <th>Login</th>
+                <th>Mot de passe</th>
             </tr>
         </thead>
         <tbody>
             {% for utilisateur in utilisateurs %}
                 <tr>
-                    <td>
-                        {{ utilisateur.id }}
-                    </td>
-                    <td>
-                        {{ utilisateur.nom }}
-                    </td>
-                    <td>
-                        {{ utilisateur.prenoms }}
-                    </td>
-                    
+                    <td>{{ utilisateur.id }}</td>
+                    <td>{{ utilisateur.nom }}</td>
+                    <td> {{ utilisateur.prenom }}</td>
+                    <td>{{ utilisateur.dateNaissance ? utilisateur.dateNaissance |date('d/m/Y') }} </td>
+                    <td>{{ utilisateur.adresse }}</td>
+                    <td>{{ utilisateur.sexe }}</td>
+                    <td>{{ utilisateur.telephone }}</td>
+                    <td>{{ utilisateur.mail }}</td>
+                    <td>{{ utilisateur.login }}</td>
+                    <td>{{ utilisateur.password }}</td>
                 </tr>
             {% else %}
                 <tr>
                     <td colspan="5">
-                        Aucune categorie pour lemoment
+                        Aucun utilisateur pour le moment
                     </td>
                 </tr>
             {% endfor %}
