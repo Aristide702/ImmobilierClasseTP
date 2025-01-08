@@ -33,17 +33,15 @@ class ArticleController extends AbstractController
 
         $form->handleRequest($request); // Le Request
 
-        //var_dump($article);
-
         if ($form->isSubMitted() && $form->isValid()) { // Soumission du Formulaire
-            $manager->persist($article); // Persistancede mon article
+            $manager->persist($article); // Persistance de mon article
             $manager->flush(); // Enregistrement de l'article dans la BD
 
             return $this->redirectToRoute('article_affichage', ['id' => $article->getId()]); // Redirection vers l'article
         }
 
         return $this->render('article/nouveau.html.twig', [
-            'formCreatArticle' => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -336,8 +334,27 @@ class ArticleController extends AbstractController
             'article/index.html.twig', [
                 // passage du contenu de $location
                 'articles' => $articles,
-            ]
-        );
+    ]);
+    }
+
+    #[Route('/vendre/terrain', name: 'article.vendre.terrain')]
+    public function terrainVendre(ArticleRepository $articleRepository, Request $request)
+    {
+        $articles = $articleRepository->terrainVendre();
+        // Appel de la page pour affichage
+        return $this->render(
+            'article/index.html.twig', [
+            ]);
+    }
+
+    #[Route('/louer/terrain', name: 'article.louer.terrain')]
+    public function terrainLouer(ArticleRepository $articleRepository, Request $request)
+    {
+        $articles = $articleRepository->terrainLouer();
+        // Appel de la page pour affichage
+        return $this->render(
+            'article/index.html.twig', [
+            ]);
     }
 
 }

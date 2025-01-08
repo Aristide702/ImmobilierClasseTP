@@ -220,6 +220,28 @@ class ArticleRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function terrainVendre()
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a')
+            ->join('a.categorie', 'e')
+            ->where('e.titre', 'Terrain à vendre')
+            ->orderBy('a.updated', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function terrainLouer()
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a')
+            ->join('a.categorie', 'e')
+            ->where('e.titre', 'Terrain à louer')
+            ->orderBy('a.updated', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Article[] Returns an array of Article objects
 //     */
